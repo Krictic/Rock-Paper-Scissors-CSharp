@@ -4,14 +4,7 @@ public class MyApp
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Type 'play' to start.");
-        var read = Console.ReadLine();
-
-        if (read == "play" && read != "exit")
-        {
-            StartGame();
-        }
-
+        StartGame();
     }
     public static string ComputerChoice()
     {
@@ -118,26 +111,35 @@ public class MyApp
 
         if (playerScore > computerScore)
         {
-            Console.WriteLine(string.Format("Player won. \n The scores were: \n {0}", scores));
+            Console.WriteLine(string.Format("\n Player won. \n The scores were: \n {0}", scores));
         }
         else if (playerScore < computerScore)
         {
-            Console.WriteLine(string.Format("Computer won. \n The scores were: \n {0}", scores));
+            Console.WriteLine(string.Format("\n Computer won. \n The scores were: \n {0}", scores));
         }
         else
         {
-            Console.WriteLine(string.Format("DRAW! \n The scores were: \n {0}", scores));
+            Console.WriteLine(string.Format("\n DRAW! \n The scores were: \n {0}", scores));
         }
 
         Console.Write("Do you want to play again? (yes or no) ");
-        if (Console.ReadLine() == "yes")
+        string? input = Console.ReadLine();
+        if (input != null)
         {
-            return StartGame();
-        }
-        else
+            input = input.ToLower();
+            if (input == "yes")
+            {
+                return StartGame();
+            }
+            else
+            {
+                return "";
+            }
+        } else
         {
             return "";
         }
+        
 
     }
 
